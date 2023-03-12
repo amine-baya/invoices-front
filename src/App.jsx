@@ -41,8 +41,8 @@ const App = () => {
     data.sumLabor = sumLabor
     data.sumMterial = sumMterial
     console.log(data,'uuuuuuuuuuuuuuuuuuuu');
-    axios.post('//localhost:5001/create-pdf', data)
-      .then(() => axios.get('//localhost:5001/fetch-pdf', { responseType: 'blob' }))
+    axios.post('https://invoices-back.onrender.com/create-pdf', data)
+      .then(() => axios.get('https://invoices-back.onrender.com/fetch-pdf', { responseType: 'blob' }))
       .then((res) => {
         const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
         saveAs(pdfBlob, 'newPdf.pdf');
