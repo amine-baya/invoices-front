@@ -16,7 +16,7 @@ const App = () => {
     setRows([...rows, newRow]);
   }
 
-  const addClientInfo = (data) => {
+  const addClientInfo = (data) => { 
     setClientInfo(data);
   }
 
