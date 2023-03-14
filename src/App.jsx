@@ -43,12 +43,13 @@ const App = () => {
     console.log(data,'uuuuuuuuuuuuuuuuuuuu');
     axios.post('https://invoices-back.onrender.com/create-pdf', data)
       .then(() => axios.get('https://invoices-back.onrender.com/fetch-pdf', { responseType: 'blob' }))
-      // .then((res) => {
-      //   console.log(res.data,'yaaaaaaaaaaaa');
-      //   const timestamp = new Date().getTime();
-      //   const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
-      //   saveAs(pdfBlob, `newPdf-${timestamp}.pdf`);
-      // })
+      .then((res) => {
+        console.log(res.data,'yaaaaaaaaaaaa');
+        console.log('yiiiiii');
+        const timestamp = new Date().getTime();
+        const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
+        saveAs(pdfBlob, `newPdf-${timestamp}.pdf`);
+      })
   }
 
   
