@@ -41,15 +41,11 @@ const App = () => {
     data.sumLabor = sumLabor
     data.sumMterial = sumMterial
     console.log(data,'uuuuuuuuuuuuuuuuuuuu');
-    const timestamp = new Date().getTime();
-
-    axios.post(`https://invoices-back.onrender.com/create-pdf?timestamp=${timestamp}`, data)
+    axios.post('https://invoices-back.onrender.com/create-pdf', data)
       .then(() => axios.get('https://invoices-back.onrender.com/fetch-pdf', { responseType: 'blob' }))
       .then((res) => {
-        console.log(res.data,'yaaaaaaaaaaaa');
-        console.log('yiiiiii');
         const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
-        saveAs(pdfBlob, `newPdf-${timestamp}.pdf`);
+        saveAs(pdfBlob, 'newPdf.pdf');
       })
   }
 
